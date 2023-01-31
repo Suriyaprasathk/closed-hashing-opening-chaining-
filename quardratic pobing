@@ -1,58 +1,37 @@
-//hasing using division and linear probing meethod
-
 #include<stdio.h>
-int main()
-{
-    int arr[20],key,hash,size,i,j=0,val;
-    printf("\nenter the size of the array\n");
-    scanf("%d",&size);
-    for(i=0;i<size;i++)
-    {
-        arr[i]=-1;
-    }
-    while(1)
-    {
-    if(j==size)
-    {
-    break;
-    }
-    else
-    {
-        printf("\nenter the key:\n");
-        scanf("%d",&key);
-        hash=key%size;
-        
-        if(arr[hash]==-1)
-        {
-            arr[hash]=key;
-            j++;
-            for(i=0;i<size;i++)
-            {
-                printf("%d\n",arr[i]);
-            }
-        }
-        else
-        {
-            printf("collusion occurs at %d",hash);
-            for(i=0;i<size;i++)
-            {
-               val=((hash)+(i*i))%size;
-               if(arr[val]==-1)
-               {
-                   arr[val]=key;
-                   j++;
-                   for(i=0;i<size;i++)
-                   {
-                       printf("%d\n",arr[i]);
-                   }
-                   break;
-               }
-               else if(i==size-1)
-               {
-                   i=-1;
-               }
-            }
-        }
-    }
-}
+void print(int arr[30],int size){
+	int i;
+	for(i=0;i<size;i++){
+		printf("\nthe value of arr[%d] is : %d",i,arr[i]);}}
+int main(){
+	int arr[30],size,i,j=0,key,hash;
+	printf("enter the size of an array");
+	scanf("%d",&size);
+	for(i=0;i<size;i++){
+			arr[i]=-1;}
+			print(arr,size);
+	while(1){
+	printf("\nenter the key to insert");
+	scanf("%d",&key);
+	if(j==size){
+		printf("the table is full");
+		break;}
+	else{
+		hash=key%size;
+		if(arr[hash]==-1){
+			arr[hash]=key;
+			j++;
+		print(arr,size);}
+		else{
+			//linerar probing
+			printf("collusion occurs at %d",hash);
+			for(i=0;i<size;i++){
+				int val=(hash+i*i)%size;
+				if(arr[val]==-1){
+					arr[val]=key;
+					j++;
+					print(arr,size);
+					break;}
+				else if(i==size-1){
+					i=-1;}}}}}
 }
